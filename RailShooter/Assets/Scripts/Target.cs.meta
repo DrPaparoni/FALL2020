@@ -3,7 +3,9 @@ guid: 7915f28f31a7fad43b2a4a0de36abc48
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - breakFX: {fileID: 1206655483287441073, guid: 64340bbb00cb31146a3e3319280c54ae,
+      type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
