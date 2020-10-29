@@ -12,31 +12,44 @@ public class Target : MonoBehaviour
     
     GameObject[] targets;
     ScoreBoard scoreBoard;
+    AmmoCounter ammoCounter;
     void Start()
     {
         scoreBoard = FindObjectOfType<ScoreBoard>();
-        
+        ammoCounter = FindObjectOfType<AmmoCounter>();
     }
 
     void Update()
     {
-        
+        findTargets();
     }
 
     void OnMouseDown()
     {
-        GameObject fx = Instantiate(breakFX, transform.position, Quaternion.identity);
-        fx.transform.parent = parent;
-        //ScoreBoard scoreBoard = FindObjectOfType<ScoreBoard>();
-        scoreBoard.ScoreHit(scorePerHit);
-        findTargets();
-
-        Destroy(gameObject);
+        if (ammoCounter.ammoCount != 0)
+        {
+            destroyTarget();
+        }
+        else
+        {
+            print("Clip empty! RELOAD with R!");
+        }
         print("Targets left: " + targets.Length);
         if (targets.Length == 1)
         {
             LoadNextLevel();
         }
+    }
+
+    private void destroyTarget()
+    {
+        GameObject fx = Instantiate(breakFX, transform.position, Quaternion.identity);
+        fx.transform.parent = parent;
+        //ScoreBoard scoreBoard = FindObjectOfType<ScoreBoard>();
+        scoreBoard.ScoreHit(scorePerHit);
+        
+
+        Destroy(gameObject);
     }
 
     void LoadNextLevel()

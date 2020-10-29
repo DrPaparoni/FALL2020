@@ -13,12 +13,12 @@ public class ScoreBoard : MonoBehaviour
     void Start()
     {
         scoreText = GetComponent<Text>();
-        scoreText.text = score.ToString();
+        scoreText.text = ("Score: " + score.ToString());
     }
 
     public void ScoreHit(int scoreIncrease)
     {
         score = score + scoreIncrease;
-        scoreText.text = score.ToString();
+        scoreText.text = ("Score: " + score.ToString());
     }
 }
